@@ -5,7 +5,7 @@ class Main {
     public static String calc(String input) {
         String[] parts = input.split(" ");
         if (parts.length != 3) {
-            return "throws Exception"; // Неправильный формат ввода
+            throw new IllegalArgumentException("Неправильный формат ввода"); // Неправильный формат ввода
         }
 
         String operand1 = parts[0];
@@ -13,15 +13,15 @@ class Main {
         String operand2 = parts[2];
 
         if (operand1.isEmpty() || operator.isEmpty() || operand2.isEmpty()) {
-            return "throws Exception"; // Пустая строка
+            throw new IllegalArgumentException("Пустая строка"); // Пустая строка
         }
 
         if (!isRomanNumber(operand1) && !isNumber(operand1)) {
-            return "throws Exception"; // Неверный формат числа
+            throw new IllegalArgumentException("Неверный формат числа"); // Неверный формат числа
         }
 
         if (!isRomanNumber(operand2) && !isNumber(operand2)) {
-            return "throws Exception"; // Неверный формат числа
+            throw new IllegalArgumentException("Неверный формат числа"); // Неверный формат числа
         }
 
         int num1;
@@ -35,7 +35,7 @@ class Main {
         }
 
         if ((num1 < 1 || num1 > 10) || (num2 < 1 || num2 > 10)) {
-            return "throws Exception"; // Числа не в диапазоне от 1 до 10
+            throw new IllegalArgumentException("Числа не в диапазоне от 1 до 10"); // Числа не в диапазоне от 1 до 10
         }
 
         int result;
@@ -51,12 +51,12 @@ class Main {
                 break;
             case "/":
                 if (num2 == 0) {
-                    return "throws Exception"; // Деление на ноль
+                    throw new IllegalArgumentException("Деление на ноль"); // Деление на ноль
                 }
                 result = num1 / num2;
                 break;
             default:
-                return "throws Exception"; // Неправильный оператор
+                throw new IllegalArgumentException("Неправильный оператор"); // Неправильный оператор
         }
 
         if (isRomanNumber(operand1) && isRomanNumber(operand2)) {
